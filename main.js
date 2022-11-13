@@ -20,13 +20,13 @@ const setDefault = document.getElementById('default');
 // Icons object 
 const weatherIcons = ["01d", "01n", "02d", "02n", "03d", "03n", "04d", "04n", "05d", "05n", "06d", "06n", "07d", "06n", "07d", "07n", "08d", "08n", "09d", "09n", "10d", "10n", "11d", "11n", "12d", "12n", "13d", "13n", "50d", "50n"]
 
-const backgroundImages = ["/images/sunny.jpg", "slides-cloudy.jpg",
+const backgroundImages = ["images/sunny.jpg", "slides-cloudy.jpg",
 "slides-rainy.jpg", "slides-thunderstorm.jpg", "slides-snow.jpg", 
 "slides-mist.jpg" ]
 
 
 const background = {
-  // "01d": "/images/
+  // "01d": "images/
   // "01n":
 }
 
@@ -42,7 +42,7 @@ const background = {
 
 // <img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">
 
-document.body.style.backgroundImage = "url('/images/sunny.jpg')";
+document.body.style.backgroundImage = "url('images/sunny.jpg')";
 document.body.style.backgroundRepeat = "no-repeat";
 document.body.style.backgroundSize = "cover";
 
@@ -55,12 +55,12 @@ const getCurrentWeather = function(){
     .then((data) => {
 // Change Background Image Weather
   if(data.weather[0].icon === '04n' || data.weather[0].icon === '04n'){
-      document.body.style.backgroundImage = "url('/images/mist.jpg')";
+      document.body.style.backgroundImage = "url('images/mist.jpg')";
       document.body.style.backgroundRepeat = "no-repeat";
       ddocument.body.style.backgroundSize = "cover";
   }
   else if (data.weather[0].icon === '10d' || data.weather[0].icon === '10n'){
-    document.body.style.backgroundImage = "url('/images/rainy.jpg')";
+    document.body.style.backgroundImage = "url('images/rainy.jpg')";
     document.body.style.backgroundRepeat = "no-repeat";
     ddocument.body.style.backgroundSize = "cover";
   }
@@ -68,6 +68,7 @@ const getCurrentWeather = function(){
 
   displayWeather.innerHTML = `
     <div className="weather-row">
+    
       <div>
         <h2 className="weekly-temp">${data.main.temp.toFixed(0)}°</h2>
         <h4>${data.name}</h4>
@@ -79,6 +80,7 @@ const getCurrentWeather = function(){
     </div>
   `
 })
+
 
 
 // Part 2: Function to fetch 5 day weather details from API and display results:
