@@ -27,7 +27,6 @@ const background = {
   "50n": "images/mist.jpg", // London: mist
 }
 
-
 // Default City
 // window.location.reload();
 // setDefault.addEventListener('click', function(){
@@ -38,15 +37,6 @@ const background = {
 
 
 // Part 1: Function to fetch current weather details from API and display results:
-
-submitBtn.addEventListener('keypress', getCurrentWeather){
-  if(e.key === "Enter"){
-
-    
-  }
-};
- 
-
 
 const getCurrentWeather = function(){
   var cityValue = cityInput.value;
@@ -118,14 +108,13 @@ const getCurrentWeather = function(){
     }
 
 
-    // document.body.style.backgroundImage = "url('images/snow.jpg')";     
-   // document.body.style.backgroundImage = "url('background['11d']'";     
+  // document.body.style.backgroundImage = "url('images/snow.jpg')";     
+  // document.body.style.backgroundImage = "url('background['11d']'";     
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";  
 
   displayWeather.innerHTML = `
     <div className="weather-row">
-
       <div>
         <h2 className="weekly-temp">${data.main.temp.toFixed(0)}°</h2>
         <h4>${data.name}</h4>
@@ -158,26 +147,29 @@ const getCurrentWeather = function(){
         document.getElementById('weather' +(i+1)).innerHTML 
         = `<h6>${data.list[i].weather[0].main}</h6>` 
       };
-  });
-}
+      // 4. days of the week
+      const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-// Part 3: Days of the week
-const d = new Date();
-console.log(new Date());
-const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const today = new Date();
 
-function CheckDay(day){
-  if(day + d.getDay() > 6){
-    return day + d.getDay() - 7;
+      day1.innerHTML = weekdays[today.getDay() + 1];
+      day2.innerHTML = weekdays[today.getDay() + 2];
+      day3.innerHTML = weekdays[today.getDay() + 3];
+      day4.innerHTML = weekdays[today.getDay() + 4];
+      day5.innerHTML = weekdays[today.getDay() + 5];
+
+    });
   }
-  else{
-    return day + d.getDay();
-  }
-}
 
-for(i = 0; i<5; i++){
-  document.getElementById("day" + (i+1)).innerHTML = weekday[CheckDay(i)];
-}
+cityInput.addEventListener('click', clearInput);
 
+function clearInput(){
+  cityInput.innerHTML = '';
+}
 
 submitBtn.addEventListener('click', getCurrentWeather);
+// submitBtn.addEventListener('click', getCurrentWeather)
+// {
+//   if(e.key === "Enter"){}
+// };
+ 
