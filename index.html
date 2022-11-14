@@ -18,7 +18,6 @@
           <h1>Weather App</h1>
           </div>
 
-          <!-- Form -->
           <form class="search-form">
             <div class="input-group mb-3">
               <input type="text" id="search-query" class="form-control" placeholder="Enter a city" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -33,86 +32,74 @@
           <button type="button" class="btn btn-primary">Current Location</button>
 
       </div>
-      </div>
-
-      <!-- Current Weather Displayed -->
-      <div class="search-results"></div>
-
-      <!-- Weekly Weather Displayed -->
-      <div class="weekly-forecast">
-
-        <div class="day-container">
-          <p id="day1"></p>
-          <p id="temperature1"></p>
-          <img src="" alt="" id="image1">
-          <p id="weather1"></p>
-        </div>
-          
-        <div class="day-container">
-          <p id="day2"></p>
-          <p id="temperature2"></p>
-          <img src="" alt="" id="image2">
-          <p id="weather2"></p>
-        </div>
-  
-        <div class="day-container"> 
-          <p id="day3"></p>
-          <p id="temperature3"></p>
-          <img src="" alt="" id="image3">
-          <p id="weather3"></p>
-        </div>
-
-        <div class="day-container">
-          <p id="day4"></p>
-          <p id="temperature4"></p>
-          <img src="" alt="" id="image4">
-          <p id="weather4"></p>
-        </div>
-
-        <div class="day-container">
-          <p id="day5"></p>
-          <p id="temperature5"></p>
-          <img src="" alt="" id="image5">
-          <p id="weather5"></p>
-        </div>      
-         
-      </div>
-
     </div>
 
-    <!-- <iframe
-      width="600"
-      height="450"
-      style="border:0"
-      loading="lazy"
-      allowfullscreen
-      referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps/embed/v1/place?key=API_KEY
-        &q=Space+Needle,Seattle+WA">
-    </iframe> -->
+    <!-- Current Weather Displayed -->
+    <div class="search-results"></div>
 
-  <!-- Handlebars Template -->
-  <!-- What do we want the template to look like? -->
-    <!-- <script id="weather-template" type="text/x-handlebars-template">
-      <div class="weather col-md-6"> 
+    <!-- Weekly Weather Displayed -->
+    <div class="weekly-forecast">
 
-        <div class="current-weather-container">     
-          <div><strong>{{ temperature }}</div>
-          <div><strong>{{ city }}</strong></div>
-          <div><strong>{{ weather }}</strong></div>
-          <img src="{imageURL}" alt="">
-        </div>
+      <div class="day-container">
+        <p id="day1"></p>
+        <p id="temperature1"></p>
+        <img src="" alt="" id="image1">
+        <p id="weather1"></p>
+      </div>
+        
+      <div class="day-container">
+        <p id="day2"></p>
+        <p id="temperature2"></p>
+        <img src="" alt="" id="image2">
+        <p id="weather2"></p>
+      </div>
 
-      </div>  
-    </script>  -->
+      <div class="day-container"> 
+        <p id="day3"></p>
+        <p id="temperature3"></p>
+        <img src="" alt="" id="image3">
+        <p id="weather3"></p>
+      </div>
+
+      <div class="day-container">
+        <p id="day4"></p>
+        <p id="temperature4"></p>
+        <img src="" alt="" id="image4">
+        <p id="weather4"></p>
+      </div>
+
+      <div class="day-container">
+        <p id="day5"></p>
+        <p id="temperature5"></p>
+        <img src="" alt="" id="image5">
+        <p id="weather5"></p>
+      </div>      
+        
+    </div>
+  </div>
+
+
+  <!------------ Handlebars ---------------->
+  <script id="weather-template" type="text/x-handlebars-template">
+    <div class="weather col-md-6"> 
+
+      <div class="current-weather-container">     
+        <div><strong>{{ temperature }}</div>
+        <div><strong>{{ city }}</strong></div>
+        <div><strong>{{ weather }}</strong></div>
+        <img src="{imageURL}" alt="">
+      </div>
+
+      var template = Handlebars.compile(current-weather-container)
+
+    </div>  
+  </script> 
     
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-   -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  
   <script src="main.js"></script>
-  <!-- <script src="withjQ.js"></script> -->
 
-  <!-- </div> -->
 </body>
 </html>

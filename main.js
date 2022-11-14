@@ -15,7 +15,6 @@ setDefault.addEventListener('click', function(){
 })
 
 // Part 1: Function to fetch current weather details from API and display results:
-
 const getCurrentWeather = function(){
   var cityValue = cityInput.value;
   console.log(`searching for city of ${cityValue}`)
