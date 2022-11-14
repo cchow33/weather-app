@@ -25,17 +25,21 @@ h1{
   height: 250px;
   width: 200px;
   margin: 10px;
+  padding-top: 25px;
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   align-items: center;
+  border: 1px solid white;
 }
 img{
   font-size: 200px;
 }
-.weather-row{
+.weather-row .left-side{
   display: flex;
+  flex-direction: row;
+  width: 50%;
 }
 .weekly-temp{
   font-size:30px;

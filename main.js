@@ -6,35 +6,13 @@ const displayWeather = document.querySelector('.search-results');
 const displayWeek = document.querySelector('.weekly-forecast'); 
 const setDefault = document.getElementById('default');
 
-const background = {
-  "01d": "images/clear.jpg", //San Francisco
-  "01n": "images/clear.jpg",
-  "02d": "images/few-clouds.jpg",
-  "02n": "images/few-clouds.jpg",
-  "03d": "images/scattered-clouds.jpg", // Miami: scattered clouds
-  "03n": "images/scattered-clouds.jpg",
-  "04d": "images/overcast.jpg", // Toronto: overcast clouds
-  "04n": "images/overcast.jpg",
-  "09d": "images/rainy.jpg",
-  "09d": "images/rainy.jpg",
-  "10d": "images/rainy.jpg", // MOntreal, Orlando: light rain;
-  "10n": "images/rainy.jpg",
-  "11d": "images/thunderstorm.jpg",
-  "11n": "images/thunderstorm.jpg",
-  "13d": "images/snow.jpg", //Yellowknife
-  "13n": "images/snow.jpg",  
-  "50d": "images/mist.jpg",
-  "50n": "images/mist.jpg", // London: mist
-}
-
 // Default City
 // window.location.reload();
-// setDefault.addEventListener('click', function(){
-//   document.getElementById("cityInput").defaultValue = cityInput;
-//   GetInfo();
-  // document.getElementById("myText").defaultValue = "Goofy";
-// })
-
+setDefault.addEventListener('click', function(){
+  console.log('Set as default city')
+  document.getElementById("cityInput").defaultValue = cityInput;
+  document.getElementById("myText").defaultValue = `${cityInput}`;
+})
 
 // Part 1: Function to fetch current weather details from API and display results:
 
@@ -49,7 +27,6 @@ const getCurrentWeather = function(){
     // Switch statements to change background images
     const backgroundImage = data.weather[0].icon;
     console.log('Weather icon code = ' + backgroundImage);
-    console.log('Background image =' + background["50n"]);
 
     switch(backgroundImage){
       case "01d": 
@@ -100,26 +77,22 @@ const getCurrentWeather = function(){
         document.body.style.backgroundImage = "url('images/snow.jpg')";
         break;
       case "50d":
-        document.body.style.backgroundImage = "url('images/mist.jpg')";
+        document.body.style.backgroundImage = "url('images/foggy.jpg')";
         break;
       case "50n":
-        document.body.style.backgroundImage = "url('images/mist.jpg')";
+        document.body.style.backgroundImage = "url('images/foggy.jpg')";
         break;
     }
-
-
-  // document.body.style.backgroundImage = "url('images/snow.jpg')";     
-  // document.body.style.backgroundImage = "url('background['11d']'";     
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundSize = "cover";  
 
   displayWeather.innerHTML = `
     <div className="weather-row">
-      <div>
+      <div className="left-side">
         <h2 className="weekly-temp">${data.main.temp.toFixed(0)}°</h2>
         <h4>${data.name}</h4>
       </div>
-      <div>
+      <div className="right-side">
         <h5>${data.weather[0].description}</h5>
         <img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png" height=95px width=95px>
       </div>
@@ -131,23 +104,16 @@ const getCurrentWeather = function(){
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityValue}&appid=${key}&units=imperial`)
     .then(response => response.json())
     .then(data => {
-      console.log('searching for 5 day forecast');
-      // 1. temperature
+      // console.log('searching for 5 day forecast');
       for(let i=0; i<5; i++){
         document.getElementById('temperature' +(i+1)).innerHTML 
         = `<h4>${data.list[i].main.temp.toFixed(0)}°</h4>`
-      };
-      // 2. weather icons
-      for(let i=0; i<5; i++){
         document.getElementById('image' +(i+1)).src = 
         `http://openweathermap.org/img/wn/${ data.list[i].weather[0].icon}.png`
-      }  
-      // 3. weather conditions
-      for(let i=0; i<5; i++){
         document.getElementById('weather' +(i+1)).innerHTML 
         = `<h6>${data.list[i].weather[0].main}</h6>` 
       };
-      // 4. days of the week
+  
       const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
       const today = new Date();
@@ -161,15 +127,5 @@ const getCurrentWeather = function(){
     });
   }
 
-cityInput.addEventListener('click', clearInput);
-
-function clearInput(){
-  cityInput.innerHTML = '';
-}
-
 submitBtn.addEventListener('click', getCurrentWeather);
-// submitBtn.addEventListener('click', getCurrentWeather)
-// {
-//   if(e.key === "Enter"){}
-// };
- 
+
